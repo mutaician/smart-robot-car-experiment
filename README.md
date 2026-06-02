@@ -6,7 +6,8 @@ Minimal project notes for an ACEBOTT QD001 smart robot car experiment. The car i
 
 <img src="smartcar-img.jpg" alt="Assembled smart robot car" width="500">
 
-[Watch the demo video: drawing a simple square](smartcar-agent-demo.mp4)
+<video src="https://github.com/user-attachments/assets/0b2938e6-2da8-40fb-8623-330a47298a2c" controls width="500"></video>
+
 
 ## Overview
 
