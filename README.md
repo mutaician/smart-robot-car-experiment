@@ -23,7 +23,7 @@ The current demo is crude but shows the concept: the laptop runs the agent, GPT 
 - `agent.py` - AI agent and car integration using OpenAI + PySerial.
 - `main.py` - earlier/manual control script for sending commands.
 - `smartcar-img.jpg` - image of the assembled car.
-- `smartcar-agent-demo.mp4` - demo video, drawing a simple square.
+- `smartcar-agent-demo-small.mp4` - demo video, drawing a simple square.
 - `Smart Car Starter Kit for ESP32V1.0.pdf` - assembly/tutorial PDF.
 - `Acebott.zip`, `ESP32Servo.zip`, `IRremote.zip` - Arduino libraries/framework files used during setup.
 
