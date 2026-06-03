@@ -17,7 +17,7 @@ print("K210 RGB LED set to white fill light.")
 
 # Color indexes:
 # 0 = all colors, 1 = red, 2 = green, 3 = blue.
-COLOR_INDEX = 3
+COLOR_INDEX = 0
 
 # Lower values are easier to trigger, higher values are stricter.
 PIXELS_TH = 30

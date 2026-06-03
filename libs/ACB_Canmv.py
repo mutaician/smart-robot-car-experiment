@@ -106,6 +106,35 @@ class ACB_Canmv:
         payload = self.uart.read(data_len)
         return payload
 
+    def _read_fixed_frame(self, data_len, max_wait_ms=200):
+        if not self.uart:
+            return None
+
+        t0 = time.ticks_ms()
+
+        while time.ticks_diff(time.ticks_ms(), t0) <= max_wait_ms:
+            if self.uart.any() < 1:
+                time.sleep_ms(1)
+                continue
+
+            b = self.uart.read(1)
+            if not b:
+                continue
+
+            # If we started reading mid-stream, discard bytes until the
+            # expected frame length marker appears.
+            if b[0] != data_len:
+                continue
+
+            while self.uart.any() < data_len:
+                if time.ticks_diff(time.ticks_ms(), t0) > max_wait_ms:
+                    return None
+                time.sleep_ms(1)
+
+            return self.uart.read(data_len)
+
+        return None
+
     @staticmethod
     def _u16(msb, lsb):
         return (msb << 8) | lsb
@@ -194,10 +223,10 @@ class ACB_Canmv:
             self.set_mode = 4
             self._write_packet(bytes([self.set_mode, 13, 10]))
 
-        payload = self._read_frame()
+        payload = self._read_fixed_frame(10)
         if not payload:
             return False
-        if len(payload) < 7:
+        if len(payload) != 10:
             return False
         self.getX = self._u16(payload[0], payload[1])
         self.getY = payload[2]
