@@ -71,12 +71,7 @@ uvx esptool --chip esp32 --port /dev/ttyUSB0 erase-flash
 uvx esptool --chip esp32 --port /dev/ttyUSB0 --baud 460800 write-flash -z 0x1000 ESP32_GENERIC-20240602-v1.23.0.bin
 ```
 
-Older command spellings also worked, but `esptool` marks them deprecated:
 
-```bash
-uvx esptool --chip esp32 --port /dev/ttyUSB0 erase_flash
-uvx esptool --chip esp32 --port /dev/ttyUSB0 --baud 460800 write_flash -z 0x1000 ESP32_GENERIC-20240602-v1.23.0.bin
-```
 
 After flashing, this should work:
 
@@ -117,6 +112,11 @@ Upload the basic color recognition files:
 uvx mpremote u0 mkdir :/libs
 uvx mpremote u0 cp libs/__init__.py :/libs/__init__.py
 uvx mpremote u0 cp libs/ACB_Canmv.py :/libs/ACB_Canmv.py
+uvx mpremote u0 cp libs/servo.py :/libs/servo.py
+uvx mpremote u0 cp libs/ultrasonic.py :/libs/ultrasonic.py
+uvx mpremote u0 cp libs/vehicle.py :/libs/vehicle.py
+
+
 uvx mpremote u0 cp color_recognition.py :/main.py
 uvx mpremote u0 reset
 ```
